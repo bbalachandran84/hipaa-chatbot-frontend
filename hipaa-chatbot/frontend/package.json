@@ -1,0 +1,1 @@
+{\n  "name": "hipaa-chatbot-frontend",\n  "version": "1.0.0",\n  "dependencies": {\n    "axios": "^1.0.0"\n  }\n}
