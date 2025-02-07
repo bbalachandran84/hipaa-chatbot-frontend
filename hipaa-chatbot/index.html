@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HIPAA-Compliant Chatbot</title>
+</head>
+<body>
+  <h1>HIPAA-Compliant Chatbot</h1>
+  <textarea id="userInput" placeholder="Enter your message here..." rows="5" cols="50"></textarea><br>
+  <button onclick="sendMessage()">Send</button>
+  <p><strong>Response:</strong> <span id="response"></span></p>
+
+  <script>
+    async function sendMessage() {
+      const userInput = document.getElementById('userInput').value;
+
+      // Call the backend API
+      const response = await fetch('https://your-api-gateway-endpoint.amazonaws.com/prod/chatbot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ input: userInput })
+      });
+
+      const data = await response.json();
+      document.getElementById('response').innerText = data.reply;
+    }
+  </script>
+</body>
+</html>
